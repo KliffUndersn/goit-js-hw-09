@@ -15,20 +15,19 @@ function createPromise(position, delay) {
   });
 }
 
-
-
 function log (e) {
   e.preventDefault();
   
-  const step= form.elements.step.value;
-  const amount= form.elements.amount.value;
-  const delay = form.elements.delay.value;
-   
-  const currentDelay = delay + step;
+  const step= Number(form.elements.step.value);
+  const amount= Number(form.elements.amount.value);
+  let delay = Number(form.elements.delay.value);
+
     for (let i = 1; i <=amount; i+=1 ) {
-      createPromise(i, currentDelay)
+
+      createPromise(i, delay)
       .then(onSuccess)
-      .catch(onError);
+      .catch(onError)
+      delay +=step
     }
 }
 
